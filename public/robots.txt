@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://samarth-portfolio-eight.vercel.app/sitemap.xml
