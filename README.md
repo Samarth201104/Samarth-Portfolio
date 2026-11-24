@@ -1,42 +1,47 @@
 # Samarth More — AI/ML Engineer Portfolio
 
-A responsive technical portfolio built with the Next.js App Router, React, and TypeScript. Styling uses custom global CSS with shared theme tokens. Framer Motion supports small, interaction-focused transitions; Lucide supplies interface icons. The site includes a persistent dark/light theme preference, project case studies, interactive architecture and technology maps, recruiter contact links, and a resume.
+A responsive engineering portfolio built with Next.js App Router, React and TypeScript. Shared CSS tokens drive charcoal and light themes. Lucide supplies interface icons, with locally served Simple Icons technology marks. No backend service or environment variables are required.
 
-## Installation
+## Run locally
 
 ```bash
 npm install
-```
-
-## Development
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [localhost:3000](http://localhost:3000).
 
-## Build and production
+## Validate and build
 
 ```bash
+npm run lint
 npm run build
 npm start
 ```
 
-`npm run lint` runs a TypeScript check (`tsc --noEmit`).
+The existing `lint` command runs TypeScript (`tsc --noEmit`). The production build also performs type checking and statically renders the portfolio. Default Next.js deployment is compatible with Vercel; no custom server or runtime secrets are required.
 
-## Environment variables
+## Structure
 
-No environment variables are required. Add actual profile and contact destinations in `app/page.tsx` before enabling social links.
+- `app/page.tsx`: server-rendered Hero, About, page composition and footer.
+- `app/layout.tsx`: fonts, SEO metadata, Person structured data and pre-paint theme initialization.
+- `app/globals.css`: centralized design tokens, component styles, responsive breakpoints and reduced-motion behavior.
+- `components/`: navigation, illustrative pipeline, experience timeline, project filters and implementation panels, skills search, contact copying and reusable UI primitives.
+- `data/projects.ts`: preserved project titles, descriptions, highlights, specifications, technologies and URLs.
+- `data/experience.ts`: preserved professional experience values, extracted verbatim from the previous page.
+- `data/profile.ts`: profile copy, exact six skill categories, presentation metadata and verified skill associations.
+- `public/resume/Samarth_More-Resume.pdf`: current user-provided resume. The shared URL lives in `data/profile.ts`.
+- `public/tech/`: local monochrome technology marks and attribution.
+- `docs/`: content evidence and redesign validation records.
 
-## Vercel deployment
+## Interaction and accessibility
 
-The current deployment is [samarth-portfolio-eight.vercel.app](https://samarth-portfolio-eight.vercel.app/). The application uses the default Next.js output and requires no environment variables or custom server configuration.
+The primary content is present in the initial HTML. Projects can be filtered by category or featured status; all technical highlights remain visible, with optional implementation panels repeating the relevant source text. Linked skills reveal their associated project even after filtering. Skills support category selection, text search and reset. Contact cards provide direct email/phone links and clipboard feedback.
 
-## Customization
+Theme preferences persist locally and fall back to the system setting. The early theme script prevents a mismatched first paint. Navigation supports section highlighting, keyboard focus and an Escape-close mobile menu. Motion is optional and disabled by `prefers-reduced-motion`. The Hero workflow is explicitly illustrative; it does not execute a model.
 
-Project data and repository URLs live in `data/projects.ts`. Experience, skill, and workflow content is defined near the top of `app/page.tsx`. Replace the resume file at `public/resume/Samarth_Resume.pdf` when updating it.
+## Content safeguards
 
-## Content configuration
+Project and experience content was checked against commit `37e4210` during the redesign. New Hero/About/Skills content follows the supplied redesign brief. DeepFake percentages are intentionally excluded from About at the user's request. The prior technical evidence record remains in `docs/content-verification.md`; repository findings were not silently used to rewrite the preserved project cards.
 
-The recruiter details are configured in the page: `samarthm770@gmail.com`, `+91 9819597946`, and the supplied GitHub and LinkedIn profiles. The resume is served from `public/resume/Samarth_Resume.pdf`.
+The existing deployment is [samarth-portfolio-eight.vercel.app](https://samarth-portfolio-eight.vercel.app/). Local code changes do not by themselves update that deployment.
