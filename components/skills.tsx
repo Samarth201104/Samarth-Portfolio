@@ -1,10 +1,52 @@
-'use client';
-import { useState } from 'react';
-import { skillGroups, skillAssociations } from '@/data/profile';
-import { Icon, SectionHeading } from './ui';
+import { skillGroups } from "@/data/skills";
+import { Icon, SectionHeading } from "./ui";
+const logos: Record<string, string> = {
+  Python: "python",
+  TypeScript: "typescript",
+  PostgreSQL: "postgresql",
+  TensorFlow: "tensorflow",
+  PyTorch: "pytorch",
+  "React.js": "react",
+  "Next.js": "nextdotjs",
+  Docker: "docker",
+  OpenCV: "opencv",
+};
 export function Skills() {
- const [hint,setHint]=useState<string | null>(null);
- const [filter,setFilter]=useState('All categories');const [query,setQuery]=useState('');
- const visible=skillGroups.filter(g=>filter==='All categories'||g.name===filter).map(g=>({...g,items:g.items.filter(i=>i.toLowerCase().includes(query.trim().toLowerCase()))})).filter(g=>g.items.length);
- return <section id="skills" tabIndex={-1} className="section container"><SectionHeading eyebrow="Technical expertise" title="The tools behind the work." description="Search the toolkit. Linked technologies take you to a relevant project or professional contribution."/><div className="skills-controls"><label className="search-field"><Icon name="search" size={18}/><span className="sr-only">Search technologies</span><input type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search technologies…"/></label><label className="select-field"><span className="sr-only">Filter skill categories</span><select value={filter} onChange={e=>setFilter(e.target.value)}><option>All categories</option>{skillGroups.map(g=><option key={g.name}>{g.name}</option>)}</select><Icon name="chevron" size={16}/></label><button className="button button-secondary" onClick={()=>{setFilter('All categories');setQuery('');}} disabled={filter==='All categories'&&!query}>Reset</button></div><p className="result-count" aria-live="polite">{visible.reduce((n,g)=>n+g.items.length,0)} skills · {visible.length} categories</p><div className="skills-grid">{visible.map(g=><article className="skill-card surface" key={g.name}><header><span className="icon-tile"><Icon name={g.icon}/></span><h3>{g.name}</h3></header><ul className="skill-chips">{g.items.map(item=>{const link=skillAssociations[item];const logo: Record<string,string> = {Python:'python',TypeScript:'typescript',PostgreSQL:'postgresql',TensorFlow:'tensorflow',PyTorch:'pytorch','React.js':'react','Next.js':'nextdotjs',Docker:'docker',OpenCV:'opencv'};const mark=logo[item]?<span className="tech-logo" aria-hidden="true" style={{maskImage:`url(/tech/${logo[item]}.svg)`}}/>:null;return <li key={item}>{link?<a href={link.href} aria-describedby={`hint-${item.replace(/\W/g,'')}`} className="skill-link" onMouseEnter={()=>setHint(item)} onMouseLeave={()=>setHint(null)} onFocus={()=>setHint(item)} onBlur={()=>setHint(null)} onKeyDown={e=>{if(e.key==='Escape')setHint(null);}}>{mark}{item}<Icon name="external" size={12}/><span role="tooltip" className={`tooltip ${hint===item?'tooltip-open':''}`} id={`hint-${item.replace(/\W/g,'')}`}>Used in {link.label}</span></a>:<span>{mark}{item}</span>}</li>;})}</ul></article>)}</div>{!visible.length&&<div className="empty-state surface"><Icon name="search" size={24}/><h3>No matching technologies</h3><p>Try another term or reset the filters.</p><button className="button button-secondary" onClick={()=>{setQuery('');setFilter('All categories');}}>Show all skills</button></div>}</section>;
+  return (
+    <section id="skills" tabIndex={-1} className="section container">
+      <SectionHeading
+        eyebrow="Technical expertise"
+        title="The tools behind the work."
+        description="A practical toolkit for developing and integrating intelligent applications."
+      />
+      <div className="skills-grid">
+        {skillGroups.map((group) => (
+          <article className="skill-card surface" key={group.name}>
+            <header>
+              <span className="icon-tile">
+                <Icon name={group.icon} />
+              </span>
+              <h3>{group.name}</h3>
+            </header>
+            <ul className="skill-chips">
+              {group.items.map((item) => (
+                <li key={item}>
+                  <span>
+                    {logos[item] && (
+                      <span
+                        className="tech-logo"
+                        aria-hidden="true"
+                        style={{ maskImage: `url(/tech/${logos[item]}.svg)` }}
+                      />
+                    )}
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
 }

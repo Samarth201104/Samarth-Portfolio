@@ -1,8 +1,26 @@
+# Dependencies and framework output
 node_modules/
 .next/
 .vercel/
+dist/
+build/
+out/
+coverage/
+
+# Local environment and generated state
 .env*
 !.env.example
 *.tsbuildinfo
 next-env.d.ts
 .audit-repos/
+*.log
+*.tmp
+*.temp
+.cache/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/

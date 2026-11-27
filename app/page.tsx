@@ -1,18 +1,28 @@
-import { Navigation } from '@/components/navigation';
-import { Pipeline } from '@/components/pipeline';
-import { Experience } from '@/components/experience';
-import { Projects } from '@/components/projects';
-import { Skills } from '@/components/skills';
-import { Contact } from '@/components/contact';
-import { Reveal } from '@/components/reveal';
-import { Icon, ButtonLink, SectionHeading, Tags } from '@/components/ui';
-import { introduction, expertiseTags, overview, expertise, resumeUrl } from '@/data/profile';
-import { profileLinks } from '@/data/projects';
+import { About } from "@/components/about";
+import { Contact } from "@/components/contact";
+import { Experience } from "@/components/experience";
+import { Footer } from "@/components/footer";
+import { Navigation } from "@/components/navigation";
+import { Projects } from "@/components/projects";
+import { Reveal } from "@/components/reveal";
+import { Skills } from "@/components/skills";
 
-export default function Home() {
- return <><a className="skip-link" href="#main-content">Skip to content</a><Navigation/><main id="main-content" tabIndex={-1}>
-  <section className="hero container" id="home" tabIndex={-1}><div className="hero-copy"><p className="eyebrow"><span className="status-dot"/>AI ENGINEERING · MUMBAI, INDIA</p><h1>Samarth More<span>.</span></h1><p className="hero-title">AI/ML Engineer <span>|</span> Generative AI <span>|</span> Computer Vision <span>|</span> Python Developer</p><div className="hero-introduction">{introduction.map(text=><p key={text}>{text}</p>)}</div><div className="hero-actions"><ButtonLink href="#projects" primary icon="boxes">Explore Projects</ButtonLink><ButtonLink href={resumeUrl} download icon="download">Download Resume</ButtonLink></div><nav className="social-links" aria-label="Profile links"><a href={profileLinks.github} target="_blank" rel="noopener noreferrer"><Icon name="github" size={17}/>GitHub</a><a href={profileLinks.linkedin} target="_blank" rel="noopener noreferrer"><Icon name="linkedin" size={17}/>LinkedIn</a><a href="#contact"><Icon name="mail" size={17}/>Contact Me</a></nav></div><Pipeline/><div className="expertise-strip"><span className="eyebrow">CORE EXPERTISE</span><ul>{expertiseTags.map(tag=><li key={tag}><a href="#skills">{tag}</a></li>)}</ul></div></section>
-  <section id="about" tabIndex={-1} className="section container"><SectionHeading eyebrow="About Me" title="Building intelligent systems from data to deployment."/><div className="about-top"><article className="about-card about-overview surface"><div className="card-heading"><span className="icon-tile"><Icon name="code"/></span><h3>An engineer’s approach.</h3></div>{overview.map(text=><p key={text}>{text}</p>)}<a className="text-link" href="#projects">Explore the engineering work</a></article><div className="about-aside"><article className="about-card education-card surface"><div className="card-heading"><span className="icon-tile"><Icon name="education"/></span><h3>Education</h3></div><h4>Viva Institute of Technology, Mumbai</h4><p>Bachelor of Engineering in Computer Science &amp; Engineering</p><p className="education-major">Artificial Intelligence &amp; Machine Learning</p><span className="meta-line"><Icon name="calendar" size={16}/>November 2022 – May 2026</span><div className="education-score"><strong>8.39<span>/10</span></strong><span>Academic CGPI</span></div></article><article className="about-card highlights-card surface"><h3>Engineering Highlights</h3><dl><div><dt>Academic CGPI</dt><dd>8.39<span>/10</span></dd></div><div><dt>Professional engagements</dt><dd>3</dd></div></dl><a href="#experience" className="text-link">View professional experience</a></article></div></div><div className="expertise-grid">{expertise.map(card=><article key={card.title} className="about-card expertise-card surface"><div className="card-heading"><span className="icon-tile"><Icon name={card.icon}/></span><h3>{card.title}</h3></div><p>{card.text}</p><Tags items={card.tech}/><a href={card.href} className="text-link">{card.link}</a></article>)}</div></section>
-  <Experience/><Projects/><Skills/><Contact/>
- </main><footer className="site-footer container"><a href="#home" className="brand"><span className="brand-monogram">sm<span>.</span></span><span>Samarth More<small>AI/ML Engineer</small></span></a><nav aria-label="Footer links"><a href={profileLinks.github} target="_blank" rel="noopener noreferrer">GitHub</a><a href={profileLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="mailto:samarthm770@gmail.com">Email</a><a href={resumeUrl} target="_blank" rel="noopener noreferrer">Resume</a></nav><small>© {new Date().getFullYear()} Samarth More</small></footer><Reveal/></>;
+export default function Portfolio() {
+  return (
+    <>
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
+      <Navigation />
+      <main id="main-content" tabIndex={-1}>
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
+      <Footer />
+      <Reveal />
+    </>
+  );
 }

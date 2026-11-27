@@ -1,47 +1,48 @@
 # Samarth More — AI/ML Engineer Portfolio
 
-A responsive engineering portfolio built with Next.js App Router, React and TypeScript. Shared CSS tokens drive charcoal and light themes. Lucide supplies interface icons, with locally served Simple Icons technology marks. No backend service or environment variables are required.
+A responsive portfolio for AI/ML, Generative AI, Computer Vision and Python engineering. Built with Next.js App Router, React, TypeScript, custom CSS with Tailwind base styles, and Lucide icons. Local Simple Icons technology marks are attributed in `public/tech/README.md`.
 
-## Run locally
+## Features
+
+- One professional About section with resume download, social links and education.
+- Experience timeline, technical metrics and six project cards with keyboard-accessible architecture dialogs.
+- Six static skill categories, responsive layouts and contact clipboard actions.
+- Persistent light/dark themes, reduced-motion support, metadata, sitemap and Person structured data.
+
+## Local development
+
+Use Node.js 20.9 or newer and npm. No environment variables, API keys or backend service are required.
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
 Open [localhost:3000](http://localhost:3000).
 
-## Validate and build
-
 ```bash
 npm run lint
+npm run typecheck
 npm run build
 npm start
 ```
 
-The existing `lint` command runs TypeScript (`tsc --noEmit`). The production build also performs type checking and statically renders the portfolio. Default Next.js deployment is compatible with Vercel; no custom server or runtime secrets are required.
+The existing `lint` script runs TypeScript validation; there is no separate ESLint configuration. `typecheck` exposes the same check explicitly. The production build statically renders the portfolio.
 
 ## Structure
 
-- `app/page.tsx`: server-rendered Hero, About, page composition and footer.
-- `app/layout.tsx`: fonts, SEO metadata, Person structured data and pre-paint theme initialization.
-- `app/globals.css`: centralized design tokens, component styles, responsive breakpoints and reduced-motion behavior.
-- `components/`: navigation, illustrative pipeline, experience timeline, project filters and implementation panels, skills search, contact copying and reusable UI primitives.
-- `data/projects.ts`: preserved project titles, descriptions, highlights, specifications, technologies and URLs.
-- `data/experience.ts`: preserved professional experience values, extracted verbatim from the previous page.
-- `data/profile.ts`: profile copy, exact six skill categories, presentation metadata and verified skill associations.
-- `public/resume/Samarth_More-Resume.pdf`: current user-provided resume. The shared URL lives in `data/profile.ts`.
-- `public/tech/`: local monochrome technology marks and attribution.
-- `docs/`: content evidence and redesign validation records.
+```text
+app/          Routes, metadata, fonts and shared CSS design tokens
+components/   Sections, navigation, footer, architecture dialog and UI primitives
+data/         Profile, education, experience, projects and skills
+hooks/        Active-section tracking and theme preference
+public/       Resume, robots.txt and local technology icons
+```
 
-## Interaction and accessibility
+Edit content in `data/`. Shared cards and numerical highlights use `components/ui.tsx`; responsive spacing, colors and typography live in `app/globals.css`. Only interactive components use a client boundary.
 
-The primary content is present in the initial HTML. Projects can be filtered by category or featured status; all technical highlights remain visible, with optional implementation panels repeating the relevant source text. Linked skills reveal their associated project even after filtering. Skills support category selection, text search and reset. Contact cards provide direct email/phone links and clipboard feedback.
+## Deployment and content
 
-Theme preferences persist locally and fall back to the system setting. The early theme script prevents a mismatched first paint. Navigation supports section highlighting, keyboard focus and an Escape-close mobile menu. Motion is optional and disabled by `prefers-reduced-motion`. The Hero workflow is explicitly illustrative; it does not execute a model.
+Deploy with the Next.js preset on Vercel using `npm run build`; no custom output directory is needed. Existing site: [samarth-portfolio-eight.vercel.app](https://samarth-portfolio-eight.vercel.app/). Local changes update the hosted site only after its deployment workflow runs.
 
-## Content safeguards
-
-Project and experience content was checked against commit `37e4210` during the redesign. New Hero/About/Skills content follows the supplied redesign brief. DeepFake percentages are intentionally excluded from About at the user's request. The prior technical evidence record remains in `docs/content-verification.md`; repository findings were not silently used to rewrite the preserved project cards.
-
-The existing deployment is [samarth-portfolio-eight.vercel.app](https://samarth-portfolio-eight.vercel.app/). Local code changes do not by themselves update that deployment.
+Project parameters describe the linked implementations. DeepFake percentages and dataset names are explicitly attributed to previous local evaluation reported in the supplied resume, not independent reproduction of public repository results. Curriculum extractors handle PDF/DOCX/TXT, while the current web route uses PDF filenames. Pixerase's displayed 25 MB limit is configured as 25 MiB. No model training or inference is performed by this portfolio.

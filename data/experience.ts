@@ -1,5 +1,124 @@
-export const experiences = [
-  { company: 'MCM BPO', role: 'Python Developer', date: 'Jul 2026 — Sep 2026', mode: 'On-site', tags: ['Python', 'REST APIs', 'SMPP', 'PostgreSQL', 'React.js', 'CSV / XLSX'], bullets: ['Developed Python REST services for individual and bulk SMS submission workflows.', 'Implemented CSV/XLSX ingestion and single-session SMPP communication for bulk message submission.', 'Integrated PostgreSQL operations for recipient-level submission records, status persistence and reporting.', 'Connected React.js frontend workflows to backend APIs, debugging validation and reporting total, submitted and failed message counts.'] },
-  { company: 'Brainwonders', role: 'AI Intern', date: 'Dec 2025 — Jan 2026', mode: 'On-site', tags: ['Python', 'OpenCV', 'FastAPI', 'NumPy', 'Gemini API', 'NLP'], bullets: ['Developed contactless fingerprint enhancement using contour-based ROI extraction, CLAHE, directional Gabor filtering and morphological refinement.', 'Implemented FastAPI services for individual fingerprint processing and batches of up to 50 images.', 'Engineered a seven-stage NLP workflow using Gemini 2.5 Flash, semantic similarity and curriculum-to-standards mapping.', 'Integrated gap identification and recommendations across PDF, DOCX and TXT academic documents.'] },
-  { company: 'Makhija Quantum AI', role: 'AI Intern', date: 'Nov 2025', mode: 'Hybrid', tags: ['Python', 'PyTorch', 'OpenCV', 'Flask', 'U²-Net', 'MI-GAN'], bullets: ['Integrated pretrained U²-Net segmentation and MI-GAN inpainting for foreground extraction and unwanted-object removal.', 'Developed OpenCV preprocessing, selection-mask refinement and image post-processing workflows.', 'Connected PyTorch model inference to Flask REST APIs to expose image editing through a web application.'] },
+export type ExperienceEntry = {
+  company: string;
+  role: string;
+  date: string;
+  mode: string;
+  bullets: string[];
+  tags: string[];
+  metrics: { label: string; value: string }[];
+};
+
+export const experiences: ExperienceEntry[] = [
+  {
+    company: "MCM BPO",
+    role: "Python Developer",
+    date: "Jul 2026 — Sep 2026",
+    mode: "On-site",
+    tags: [
+      "Python",
+      "REST APIs",
+      "SMPP",
+      "PostgreSQL",
+      "SQL",
+      "React.js",
+      "Git",
+      "GitHub",
+    ],
+    bullets: [
+      "Engineered Python-based REST APIs supporting 2 SMS workflows (single and bulk), CSV/XLSX data ingestion, and single-session SMPP communication for bulk message submissions.",
+      "Integrated PostgreSQL and React.js with backend services, implementing recipient-level submission tracking, 3 reporting counters (total, submitted, failed), database operations, API integration, and backend debugging.",
+    ],
+    metrics: [
+      {
+        label: "SMS workflows",
+        value: "2 · single + bulk",
+      },
+      {
+        label: "Spreadsheet formats",
+        value: "2 · CSV + XLSX",
+      },
+      {
+        label: "SMPP communication",
+        value: "Single session",
+      },
+      {
+        label: "Reporting counters",
+        value: "3 · total / submitted / failed",
+      },
+    ],
+  },
+  {
+    company: "Brainwonders",
+    role: "AI Intern",
+    date: "Dec 2025 — Jan 2026",
+    mode: "On-site",
+    tags: [
+      "Python",
+      "OpenCV",
+      "FastAPI",
+      "Computer Vision",
+      "Image Processing",
+      "NLP",
+      "Gemini API",
+    ],
+    bullets: [
+      "Developed a contactless fingerprint processing pipeline using contour-based ROI extraction, CLAHE, 16-angle Gabor filtering, adaptive thresholding, and morphological operations, supporting batch processing of up to 50 fingerprint images through FastAPI.",
+      "Engineered a 7-stage NLP pipeline using Gemini 2.5 Flash, supporting 3 document formats (PDF, DOCX, and TXT), semantic similarity analysis, curriculum mapping, automated gap identification, and recommendation generation.",
+    ],
+    metrics: [
+      {
+        label: "Gabor orientations",
+        value: "16 angles",
+      },
+      {
+        label: "Batch capacity",
+        value: "Up to 50 images",
+      },
+      {
+        label: "NLP pipeline",
+        value: "7 stages",
+      },
+      {
+        label: "Extraction formats",
+        value: "3 · PDF / DOCX / TXT",
+      },
+    ],
+  },
+  {
+    company: "Makhija Quantum AI",
+    role: "AI Intern",
+    date: "Nov 2025",
+    mode: "Hybrid",
+    tags: [
+      "Python",
+      "PyTorch",
+      "OpenCV",
+      "U²-Net",
+      "MI-GAN",
+      "Flask",
+      "REST APIs",
+    ],
+    bullets: [
+      "Integrated 2 pretrained deep learning architectures, U²-Net and MI-GAN, for foreground image segmentation and generative image inpainting using PyTorch.",
+      "Implemented OpenCV-based image preprocessing, mask refinement, model inference, and Flask REST API integration for 2 image editing workflows: automated background removal and intelligent object removal.",
+    ],
+    metrics: [
+      {
+        label: "Pretrained architectures",
+        value: "2 · U²-Net + MI-GAN",
+      },
+      {
+        label: "Image editing workflows",
+        value: "2 · background + object removal",
+      },
+      {
+        label: "Vision tasks",
+        value: "Segmentation + inpainting",
+      },
+      {
+        label: "Model integration",
+        value: "Flask REST APIs",
+      },
+    ],
+  },
 ];
