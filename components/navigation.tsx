@@ -39,6 +39,14 @@ export function Navigation() {
   return (
     <header className="site-header">
       <div className="container nav-inner">
+        <a
+          className="brand nav-brand"
+          href="#about"
+          aria-label="SM, back to portfolio introduction"
+          onClick={() => navigate("About")}
+        >
+          <span className="brand-monogram">SM</span>
+        </a>
         <nav className="desktop-nav" aria-label="Main navigation">
           {navigation.map((name) => (
             <a

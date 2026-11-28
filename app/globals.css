@@ -368,9 +368,13 @@ article[id] {
 .nav-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: initial;
   gap: 24px;
   min-height: 72px;
+}
+
+.nav-brand {
+  margin-right: auto;
 }
 
 .brand {
@@ -395,6 +399,7 @@ article[id] {
 .desktop-nav {
   display: flex;
   gap: 24px;
+  margin-inline: auto;
 }
 
 .desktop-nav a {
@@ -431,6 +436,7 @@ article[id] {
   display: flex;
   gap: 8px;
   align-items: center;
+  margin-left: auto;
 }
 
 .menu-toggle {
