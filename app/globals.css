@@ -377,6 +377,19 @@ article[id] {
   margin-right: auto;
 }
 
+.nav-brand-name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.nav-brand-name small {
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 400;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -400,6 +413,18 @@ article[id] {
   display: flex;
   gap: 24px;
   margin-inline: auto;
+}
+
+@media (min-width: 1000px) {
+  .nav-inner {
+    position: relative;
+  }
+
+  .desktop-nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .desktop-nav a {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { navigation } from "@/data/profile";
+import { navigation, profile } from "@/data/profile";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { useTheme } from "@/hooks/use-theme";
 import { Icon } from "./ui";
@@ -42,10 +42,14 @@ export function Navigation() {
         <a
           className="brand nav-brand"
           href="#about"
-          aria-label="SM, back to portfolio introduction"
+          aria-label="Samarth More, AI/ML Engineer, back to portfolio introduction"
           onClick={() => navigate("About")}
         >
           <span className="brand-monogram">SM</span>
+          <span className="nav-brand-name">
+            {profile.name}
+            <small>AI/ML Engineer</small>
+          </span>
         </a>
         <nav className="desktop-nav" aria-label="Main navigation">
           {navigation.map((name) => (
